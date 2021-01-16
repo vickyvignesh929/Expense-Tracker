@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tracker.entity.chartsData;
-import com.tracker.service.DataBaseManagementSystem;
+import com.tracker.service.DataBaseServiceImpl;
 
 @Controller
 
 public class chartsController {
+	
+	DataBaseServiceImpl databaseserviceimpl=new DataBaseServiceImpl();
 	@RequestMapping(value = "/monthlyexpensechart", method = RequestMethod.GET)
 	public String monthlyExpenseChart() {
 		return "monthlyexpensecharts";
@@ -24,7 +26,7 @@ public class chartsController {
 	@RequestMapping(value = "monthlyexpensedata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> expenseData(HttpSession session) {
-		List<chartsData> list = DataBaseManagementSystem.getChartsData((String) session.getAttribute("user"), "expense",
+		List<chartsData> list = databaseserviceimpl.getChartsData((String) session.getAttribute("user"), "expense",
 				"MONTH");
 		System.out.println(list);
 		return list;
@@ -39,7 +41,7 @@ public class chartsController {
 	@RequestMapping(value = "monthlyincomedata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> Incomedata(HttpSession session) {
-		List<chartsData> list = DataBaseManagementSystem.getChartsData((String) session.getAttribute("user"), "income",
+		List<chartsData> list = databaseserviceimpl.getChartsData((String) session.getAttribute("user"), "income",
 				"MONTH");
 		System.out.println(list);
 		return list;
@@ -54,7 +56,7 @@ public class chartsController {
 	@RequestMapping(value = "yearlyexpensedata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> yearlyExpenseData(HttpSession session) {
-		List<chartsData> list = DataBaseManagementSystem.getChartsData((String) session.getAttribute("user"), "expense",
+		List<chartsData> list = databaseserviceimpl.getChartsData((String) session.getAttribute("user"), "expense",
 				"YEAR");
 		System.out.println(list);
 		return list;
@@ -69,7 +71,7 @@ public class chartsController {
 	@RequestMapping(value = "yearlyincomedata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> yearlyIncomeData(HttpSession session) {
-		List<chartsData> list = DataBaseManagementSystem.getChartsData((String) session.getAttribute("user"), "income",
+		List<chartsData> list = databaseserviceimpl.getChartsData((String) session.getAttribute("user"), "income",
 				"YEAR");
 		System.out.println(list);
 		return list;
@@ -79,7 +81,7 @@ public class chartsController {
 	@RequestMapping(value = "searchdata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> searchData(HttpSession session,@RequestParam("monthyear") String month) {
-		List<chartsData> list = DataBaseManagementSystem.getSearchData((String) session.getAttribute("user"),month);
+		List<chartsData> list = databaseserviceimpl.getSearchData((String) session.getAttribute("user"),month);
 		System.out.println(list);
 		return list;
 
@@ -88,7 +90,7 @@ public class chartsController {
 	@RequestMapping(value = "searchyeardata", method = RequestMethod.GET)
 	@ResponseBody
 	public List<chartsData> searchYearData(HttpSession session,@RequestParam("year") String year) {
-		List<chartsData> list = DataBaseManagementSystem.getSearchYearData((String) session.getAttribute("user"),year);
+		List<chartsData> list = databaseserviceimpl.getSearchYearData((String) session.getAttribute("user"),year);
 		System.out.println(list);
 		return list;
 

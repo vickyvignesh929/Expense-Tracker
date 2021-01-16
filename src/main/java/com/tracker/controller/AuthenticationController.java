@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tracker.entity.UserData;
-import com.tracker.service.DataBaseManagementSystem;
+import com.tracker.service.DataBaseServiceImpl;
 
 @Controller
 public class AuthenticationController {
+	
+	DataBaseServiceImpl databaseserviceimpl=new DataBaseServiceImpl();
 	@RequestMapping("/")
 	public String Page() {
 		return "bottomdata";
@@ -29,7 +31,7 @@ public class AuthenticationController {
 
 	@RequestMapping("/adduser")
 	public String adduser(@ModelAttribute("userdata") UserData user, BindingResult result) {
-		if (DataBaseManagementSystem.addUser(user))
+		if (databaseserviceimpl.addUser(user))
 			return "login";
 		else {
 
@@ -44,7 +46,7 @@ public class AuthenticationController {
 	public String checklogin(@ModelAttribute("userdata") UserData user, BindingResult result, HttpSession session) {
 		
 
-		if (DataBaseManagementSystem.checkUser(user)) {
+		if (databaseserviceimpl.checkUser(user)) {
 			session.setAttribute("user", user.getUsername());
 
 			return "dashboard";

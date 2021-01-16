@@ -30,7 +30,7 @@
 				<f:errors path="username" cssClass="warning"></f:errors>
 			</div>
 			<div class="field">
-				<input type="email" name="email" required="required"> <label>Email
+				<input type="email" name="email" required="required" autofocus="autofocus"> <label>Email
 					Id</label>
 			</div>
 			<div class="field">

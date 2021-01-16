@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="qoute">
-	<h3>"the art is not in making money, but in keeping it"</h3>
+	<h3>"The art is not in making money, but in keeping it"</h3>
 	
 	
 	</div>
@@ -23,7 +23,7 @@
 				<f:errors class="warning" path="username"></f:errors>
 			</div>
 			<div class="field">
-				<input type="text" name="username"> <label>Username</label>
+				<input type="text" name="username" autofocus="autofocus"> <label>Username</label>
 			</div>
 			<div class="field">
 				<input type="password" name="password" required> <label>Password</label>

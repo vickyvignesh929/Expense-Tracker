@@ -42,7 +42,7 @@ nav ul li a {
 	line-height: 70px;
 	font-size: 20px;
 	background: #063247;
-	transition: .5s;
+	
 }
 
 nav ul li a:hover {
@@ -62,7 +62,7 @@ nav ul li:hover>ul {
 	top: 70px;
 	opacity: 1;
 	visibility: visible;
-	transition: .3s linear;
+	
 }
 
 nav ul ul li {
